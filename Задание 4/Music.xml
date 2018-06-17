@@ -1,0 +1,324 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<music>
+    <albums>
+        <album id="1" name="Gore"/>
+        <album id="2" name="Adema"/>
+        <album id="3" name="Eat Me, Drink Me"/>
+        <album id="4" name="Californication"/>
+    </albums>
+    <artists>
+        <artist id="1" name="Deftones"/>
+        <artist id="2" name="Adema"/>
+        <artist id="3" name="Marilyn Manson"/>
+        <artist id="4" name="Red Hot Chili Peppers"/>
+    </artists>
+    <genres>
+        <genre id="1" name="Alternative Metal"/>
+        <genre id="2" name="Experimental Rock"/>
+        <genre id="3" name="Space Rock"/>
+        <genre id="4" name="Nu Metal"/>
+        <genre id="5" name="Gothic Rock"/>
+        <genre id="6" name="Alternative Rock"/>
+        <genre id="7" name="Funk Rock"/>
+    </genres>
+    <tracks>
+        <track id="1" album-id="1" artist-id="1" length="3:38" name="Prayers / Triangles" number="1" released="8.4.2016">
+            <genres>
+                <genre genre-id="1"/>
+                <genre genre-id="2"/>
+                <genre genre-id="3"/>
+            </genres>
+        </track>
+        <track id="2" album-id="1" artist-id="1" length="4:06" name="Acid Hologram" number="2" released="8.4.2016">
+            <genres>
+                <genre genre-id="1"/>
+                <genre genre-id="2"/>
+                <genre genre-id="3"/>
+            </genres>
+        </track>
+        <track id="3" album-id="1" artist-id="1" length="4:27" name="Doomed User" number="3" released="8.4.2016">
+            <genres>
+                <genre genre-id="1"/>
+                <genre genre-id="2"/>
+                <genre genre-id="3"/>
+            </genres>
+        </track>
+        <track id="4" album-id="1" artist-id="1" length="3:29" name="Geometric Headdress" number="4" released="8.4.2016">
+            <genres>
+                <genre genre-id="1"/>
+                <genre genre-id="2"/>
+                <genre genre-id="3"/>
+            </genres>
+        </track>
+        <track id="5" album-id="1" artist-id="1" length="5:21" name="Hearts / Wires" number="5" released="8.4.2016">
+            <genres>
+                <genre genre-id="1"/>
+                <genre genre-id="2"/>
+                <genre genre-id="3"/>
+            </genres>
+        </track>
+        <track id="6" album-id="1" artist-id="1" length="4:04" name="Pittura Infamante" number="6" released="8.4.2016">
+            <genres>
+                <genre genre-id="1"/>
+                <genre genre-id="2"/>
+                <genre genre-id="3"/>
+            </genres>
+        </track>
+        <track id="7" album-id="1" artist-id="1" length="3:17" name="Xenon" number="7" released="8.4.2016">
+            <genres>
+                <genre genre-id="1"/>
+                <genre genre-id="2"/>
+                <genre genre-id="3"/>
+            </genres>
+        </track>
+        <track id="8" album-id="1" artist-id="1" length="5:02" name="(L)MIRL" number="8" released="8.4.2016">
+            <genres>
+                <genre genre-id="1"/>
+                <genre genre-id="2"/>
+                <genre genre-id="3"/>
+            </genres>
+        </track>
+        <track id="9" album-id="1" artist-id="1" length="4:59" name="Gore" number="9" released="8.4.2016">
+            <genres>
+                <genre genre-id="1"/>
+                <genre genre-id="2"/>
+                <genre genre-id="3"/>
+            </genres>
+        </track>
+        <track id="10" album-id="1" artist-id="1" length="4:53" name="Phantom Bride" number="10" released="8.4.2016">
+            <genres>
+                <genre genre-id="1"/>
+                <genre genre-id="2"/>
+                <genre genre-id="3"/>
+            </genres>
+        </track>
+        <track id="11" album-id="1" artist-id="1" length="4:58" name="Rubicon" number="11" released="8.4.2016">
+            <genres>
+                <genre genre-id="1"/>
+                <genre genre-id="2"/>
+                <genre genre-id="3"/>
+            </genres>
+        </track>
+        <track id="12" album-id="2" artist-id="2" length="3:29" name="Everyone" number="1" released="21.8.2001">
+            <genres>
+                <genre genre-id="3"/>
+            </genres>
+        </track>
+        <track id="13" album-id="2" artist-id="2" length="3:02" name="Blow It Away" number="2" released="21.8.2001">
+            <genres>
+                <genre genre-id="3"/>
+            </genres>
+        </track>
+        <track id="14" album-id="2" artist-id="2" length="4:34" name="Giving In" number="3" released="21.8.2001">
+            <genres>
+                <genre genre-id="3"/>
+            </genres>
+        </track>
+        <track id="15" album-id="2" artist-id="2" length="3:35" name="Freaking Out" number="4" released="21.8.2001">
+            <genres>
+                <genre genre-id="3"/>
+            </genres>
+        </track>
+        <track id="16" album-id="2" artist-id="2" length="3:39" name="The Way You Like It" number="5" released="21.8.2001">
+            <genres>
+                <genre genre-id="3"/>
+            </genres>
+        </track>
+        <track id="17" album-id="2" artist-id="2" length="3:24" name="Close Friends" number="6" released="21.8.2001">
+            <genres>
+                <genre genre-id="3"/>
+            </genres>
+        </track>
+        <track id="18" album-id="2" artist-id="2" length="3:00" name="Do What You Want to Do" number="7" released="21.8.2001">
+            <genres>
+                <genre genre-id="3"/>
+            </genres>
+        </track>
+        <track id="19" album-id="2" artist-id="2" length="3:23" name="Skin" number="8" released="21.8.2001">
+            <genres>
+                <genre genre-id="3"/>
+            </genres>
+        </track>
+        <track id="20" album-id="2" artist-id="2" length="3:29" name="Pain Inside" number="9" released="21.8.2001">
+            <genres>
+                <genre genre-id="3"/>
+            </genres>
+        </track>
+        <track id="21" album-id="2" artist-id="2" length="3:32" name="Speculum" number="10" released="21.8.2001">
+            <genres>
+                <genre genre-id="3"/>
+            </genres>
+        </track>
+        <track id="22" album-id="2" artist-id="2" length="3:26" name="Drowning" number="11" released="21.8.2001">
+            <genres>
+                <genre genre-id="3"/>
+            </genres>
+        </track>
+        <track id="23" album-id="2" artist-id="2" length="4:21" name="Trust" number="12" released="21.8.2001">
+            <genres>
+                <genre genre-id="3"/>
+            </genres>
+        </track>
+        <track id="24" album-id="2" artist-id="2" length="3:09" name="Shattered" number="13" released="21.8.2001">
+            <genres>
+                <genre genre-id="3"/>
+            </genres>
+        </track>
+        <track id="25" album-id="3" artist-id="3" length="5:56" name="If I Was Your Vampire" number="1" released="5.1.2007">
+            <genres>
+                <genre genre-id="5"/>
+                <genre genre-id="6"/>
+            </genres>
+        </track>
+        <track id="26" album-id="3" artist-id="3" length="4:31" name="Putting Holes in Happiness" number="2" released="5.1.2007">
+            <genres>
+                <genre genre-id="5"/>
+                <genre genre-id="6"/>
+            </genres>
+        </track>
+        <track id="27" album-id="3" artist-id="3" length="4:05" name="The Red Carpet Grave" number="3" released="5.1.2007">
+            <genres>
+                <genre genre-id="5"/>
+                <genre genre-id="6"/>
+            </genres>
+        </track>
+        <track id="28" album-id="3" artist-id="3" length="4:17" name="They Said That Hell's Not Hot" number="4" released="5.1.2007">
+            <genres>
+                <genre genre-id="5"/>
+                <genre genre-id="6"/>
+            </genres>
+        </track>
+        <track id="29" album-id="3" artist-id="3" length="4:55" name="Just a Car Crash Away" number="5" released="5.1.2007">
+            <genres>
+                <genre genre-id="5"/>
+                <genre genre-id="6"/>
+            </genres>
+        </track>
+        <track id="30" album-id="3" artist-id="3" length="5:05" name="Heart-Shaped Glasses (When the Heart Guides the Hand)" number="6" released="5.1.2007">
+            <genres>
+                <genre genre-id="5"/>
+                <genre genre-id="6"/>
+            </genres>
+        </track>
+        <track id="31" album-id="3" artist-id="3" length="5:19" name="Evidence" number="7" released="5.1.2007">
+            <genres>
+                <genre genre-id="5"/>
+                <genre genre-id="6"/>
+            </genres>
+        </track>
+        <track id="32" album-id="3" artist-id="3" length="4:14" name="Are You the Rabbit?" number="8" released="5.1.2007">
+            <genres>
+                <genre genre-id="5"/>
+                <genre genre-id="6"/>
+            </genres>
+        </track>
+        <track id="33" album-id="3" artist-id="3" length="3:52" name="Mutilation Is the Most Sincere Form of Flattery" number="9" released="5.1.2007">
+            <genres>
+                <genre genre-id="5"/>
+                <genre genre-id="6"/>
+            </genres>
+        </track>
+        <track id="34" album-id="3" artist-id="3" length="4:24" name="You and Me and the Devil Makes 3" number="10" released="5.1.2007">
+            <genres>
+                <genre genre-id="5"/>
+                <genre genre-id="6"/>
+            </genres>
+        </track>
+        <track id="35" album-id="3" artist-id="3" length="5:40" name="Eat Me, Drink Me" number="11" released="5.1.2007">
+            <genres>
+                <genre genre-id="5"/>
+                <genre genre-id="6"/>
+            </genres>
+        </track>
+        <track id="36" album-id="4" artist-id="4" length="3:58" name="Around the World" number="1" released="8.6.1999">
+            <genres>
+                <genre genre-id="6"/>
+                <genre genre-id="7"/>
+            </genres>
+        </track>
+        <track id="37" album-id="4" artist-id="4" length="4:30" name="Parallel Universe" number="2" released="8.6.1999">
+            <genres>
+                <genre genre-id="6"/>
+                <genre genre-id="7"/>
+            </genres>
+        </track>
+        <track id="38" album-id="4" artist-id="4" length="3:37" name="Scar Tissue" number="3" released="8.6.1999">
+            <genres>
+                <genre genre-id="6"/>
+                <genre genre-id="7"/>
+            </genres>
+        </track>
+        <track id="39" album-id="4" artist-id="4" length="4:15" name="Otherside" number="4" released="8.6.1999">
+            <genres>
+                <genre genre-id="6"/>
+                <genre genre-id="7"/>
+            </genres>
+        </track>
+        <track id="40" album-id="4" artist-id="4" length="3:18" name="Get on Top" number="5" released="8.6.1999">
+            <genres>
+                <genre genre-id="6"/>
+                <genre genre-id="7"/>
+            </genres>
+        </track>
+        <track id="41" album-id="4" artist-id="4" length="5:21" name="Californication" number="6" released="8.6.1999">
+            <genres>
+                <genre genre-id="6"/>
+                <genre genre-id="7"/>
+            </genres>
+        </track>
+        <track id="42" album-id="4" artist-id="4" length="3:51" name="Easily" number="7" released="8.6.1999">
+            <genres>
+                <genre genre-id="6"/>
+                <genre genre-id="7"/>
+            </genres>
+        </track>
+        <track id="43" album-id="4" artist-id="4" length="2:43" name="Porcelain" number="8" released="8.6.1999">
+            <genres>
+                <genre genre-id="6"/>
+                <genre genre-id="7"/>
+            </genres>
+        </track>
+        <track id="44" album-id="4" artist-id="4" length="4:00" name="Emit Remmus" number="9" released="8.6.1999">
+            <genres>
+                <genre genre-id="6"/>
+                <genre genre-id="7"/>
+            </genres>
+        </track>
+        <track id="45" album-id="4" artist-id="4" length="2:37" name="I Like Dirt" number="10" released="8.6.1999">
+            <genres>
+                <genre genre-id="6"/>
+                <genre genre-id="7"/>
+            </genres>
+        </track>
+        <track id="46" album-id="4" artist-id="4" length="3:45" name="This Velvet Glove" number="11" released="8.6.1999">
+            <genres>
+                <genre genre-id="6"/>
+                <genre genre-id="7"/>
+            </genres>
+        </track>
+        <track id="47" album-id="4" artist-id="4" length="4:52" name="Savior" number="12" released="8.6.1999">
+            <genres>
+                <genre genre-id="6"/>
+                <genre genre-id="7"/>
+            </genres>
+        </track>
+        <track id="48" album-id="4" artist-id="4" length="4:13" name="Purple Stain" number="13" released="8.6.1999">
+            <genres>
+                <genre genre-id="6"/>
+                <genre genre-id="7"/>
+            </genres>
+        </track>
+        <track id="49" album-id="4" artist-id="4" length="1:52" name="Right on Time" number="14" released="8.6.1999">
+            <genres>
+                <genre genre-id="6"/>
+                <genre genre-id="7"/>
+            </genres>
+        </track>
+        <track id="50" album-id="4" artist-id="4" length="3:25" name="Road Trippin" number="15" released="8.6.1999">
+            <genres>
+                <genre genre-id="6"/>
+                <genre genre-id="7"/>
+            </genres>
+        </track>
+    </tracks>
+</music>

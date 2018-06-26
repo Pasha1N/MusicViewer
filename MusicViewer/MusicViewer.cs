@@ -13,6 +13,11 @@ namespace MusicViewer
 {
     public partial class MusicViewer : Form
     {
+        private Dictionary<string, string> idAndNamesAlbums = new Dictionary<string, string>();
+        private Dictionary<string, string> idAndNamesArtists = new Dictionary<string, string>();
+        private Dictionary<string, string> idAndNamesGenres = new Dictionary<string, string>();
+        private IEnumerable<string> attributes = new List<string>();
+
         public MusicViewer()
         {
             InitializeComponent();
@@ -20,69 +25,76 @@ namespace MusicViewer
 
         private void ComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
+            toDateTime.Text = "1.1.1";
 
+            XmlDocument xmlDocument = new XmlDocument();
+            xmlDocument.Load(openFileDialog.FileName);
+            XmlNodeList nodes = xmlDocument.DocumentElement.ChildNodes;
 
-
-
-        }
-
-        private void ButtonLoad_Click(object sender, EventArgs e)
-        {
-            openFileDialog.ShowDialog();
-            using (XmlReader reader = XmlReader.Create(openFileDialog.FileName))
+            foreach (XmlNode node in nodes)
             {
-                while (reader.Read())
+                if (node.Name == "tracks")
                 {
-                    if (reader.IsStartElement())
+                    XmlNodeList tracks = node.ChildNodes;
+                    foreach (XmlNode track in tracks)
                     {
-                        if (reader.Name == "track")
+                        int key = int.Parse(track.Attributes["artist-id"].Value);
+                        if (idAndNamesArtists[key.ToString()] == comboBox.SelectedItem.ToString())
                         {
-                            if (reader.GetAttribute("artist-id") != null)
+                            if (int.Parse(track.Attributes["released"].Value) > int.Parse(fromDateTime.Value.ToString()) && int.Parse(track.Attributes["released"].Value) < int.Parse(toDateTime.Value.ToString()))
                             {
-                                bool addMore = true;
-
-                                foreach (string item in comboBox.Items)
-                                {
-                                    if (item == ConverteToName(reader.GetAttribute("artist-id")))
-                                    {
-                                        addMore = false;
-                                        break;
-                                    }
-                                }
-
-                                if(addMore)
-                                {
-                                    comboBox.Items.Add(ConverteToName(reader.GetAttribute("artist-id")));
-                                }
+                                listBox1.Items.Add(track.Attributes["name"].Value + "<<<>>>" + track.Attributes["released"].Value);
                             }
+
+
+
                         }
                     }
                 }
             }
         }
 
-        public string ConverteToName(string id)
+        private void ButtonLoad_Click(object sender, EventArgs e)
         {
-            string conversionResult = null;
+            openFileDialog.ShowDialog();
 
-            if (id == "1")
-            {
-                conversionResult = "Deftones";
-            }
-            else if (id == "2")
-            {
-                conversionResult = "Adema";
-            }
-            else if (id == "3")
-            {
-                conversionResult = "Marilyn Manson";
-            }
-            else if (id == "4")
-            {
-                conversionResult = "Red Hot Chili Peppers";
-            }
+            XmlDocument xmlDocument = new XmlDocument();
+            xmlDocument.Load(openFileDialog.FileName);
+            XmlNodeList nodes =xmlDocument.DocumentElement.ChildNodes;
 
-            return conversionResult;
+            foreach (XmlNode node in nodes)
+            {
+                if (node.Name == "albums")
+                {
+                    XmlNodeList albums = node.ChildNodes;
+
+                    foreach (XmlNode item in albums)
+                    {
+                         idAndNamesAlbums.Add(item.Attributes["id"].Value, item.Attributes["name"].Value);
+                    }
+                }
+
+                if (node.Name == "artists")
+                {
+                    XmlNodeList albums = node.ChildNodes;
+
+                    foreach (XmlNode item in albums)
+                    {
+                        comboBox.Items.Add(item.Attributes["name"].Value);
+                        idAndNamesArtists.Add(item.Attributes["id"].Value, item.Attributes["name"].Value);
+                    }
+                }
+
+                if (node.Name == "genre")
+                {
+                    XmlNodeList albums = node.ChildNodes;
+
+                    foreach (XmlNode item in albums)
+                    {
+                        idAndNamesGenres.Add(item.Attributes["id"].Value, item.Attributes["name"].Value);
+                    }
+                }
+            }
         }
     }
 }

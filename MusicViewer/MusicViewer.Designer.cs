@@ -31,8 +31,8 @@
             this.buttonLoad = new System.Windows.Forms.Button();
             this.listBox1 = new System.Windows.Forms.ListBox();
             this.comboBox = new System.Windows.Forms.ComboBox();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
-            this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
+            this.fromDateTime = new System.Windows.Forms.DateTimePicker();
+            this.toDateTime = new System.Windows.Forms.DateTimePicker();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -75,19 +75,19 @@
             this.comboBox.TabIndex = 3;
             this.comboBox.SelectedIndexChanged += new System.EventHandler(this.ComboBox_SelectedIndexChanged);
             // 
-            // dateTimePicker1
+            // fromDateTime
             // 
-            this.dateTimePicker1.Location = new System.Drawing.Point(54, 39);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(200, 20);
-            this.dateTimePicker1.TabIndex = 4;
+            this.fromDateTime.Location = new System.Drawing.Point(54, 39);
+            this.fromDateTime.Name = "fromDateTime";
+            this.fromDateTime.Size = new System.Drawing.Size(200, 20);
+            this.fromDateTime.TabIndex = 4;
             // 
-            // dateTimePicker2
+            // toDateTime
             // 
-            this.dateTimePicker2.Location = new System.Drawing.Point(313, 39);
-            this.dateTimePicker2.Name = "dateTimePicker2";
-            this.dateTimePicker2.Size = new System.Drawing.Size(200, 20);
-            this.dateTimePicker2.TabIndex = 5;
+            this.toDateTime.Location = new System.Drawing.Point(313, 39);
+            this.toDateTime.Name = "toDateTime";
+            this.toDateTime.Size = new System.Drawing.Size(200, 20);
+            this.toDateTime.TabIndex = 5;
             // 
             // label1
             // 
@@ -200,8 +200,8 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.dateTimePicker2);
-            this.Controls.Add(this.dateTimePicker1);
+            this.Controls.Add(this.toDateTime);
+            this.Controls.Add(this.fromDateTime);
             this.Controls.Add(this.comboBox);
             this.Controls.Add(this.listBox1);
             this.Controls.Add(this.buttonLoad);
@@ -220,8 +220,8 @@
         private System.Windows.Forms.Button buttonLoad;
         private System.Windows.Forms.ListBox listBox1;
         private System.Windows.Forms.ComboBox comboBox;
-        private System.Windows.Forms.DateTimePicker dateTimePicker1;
-        private System.Windows.Forms.DateTimePicker dateTimePicker2;
+        private System.Windows.Forms.DateTimePicker fromDateTime;
+        private System.Windows.Forms.DateTimePicker toDateTime;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;

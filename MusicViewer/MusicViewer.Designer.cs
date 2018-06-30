@@ -81,6 +81,7 @@
             this.fromDateTime.Name = "fromDateTime";
             this.fromDateTime.Size = new System.Drawing.Size(200, 20);
             this.fromDateTime.TabIndex = 4;
+            this.fromDateTime.ValueChanged += new System.EventHandler(this.FromDateTime_ValueChanged);
             // 
             // toDateTime
             // 
@@ -88,6 +89,7 @@
             this.toDateTime.Name = "toDateTime";
             this.toDateTime.Size = new System.Drawing.Size(200, 20);
             this.toDateTime.TabIndex = 5;
+            this.toDateTime.ValueChanged += new System.EventHandler(this.ToDateTime_ValueChanged);
             // 
             // label1
             // 

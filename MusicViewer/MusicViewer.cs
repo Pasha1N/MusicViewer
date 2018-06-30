@@ -25,33 +25,7 @@ namespace MusicViewer
 
         private void ComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            toDateTime.Text = "1.1.1";
-
-            XmlDocument xmlDocument = new XmlDocument();
-            xmlDocument.Load(openFileDialog.FileName);
-            XmlNodeList nodes = xmlDocument.DocumentElement.ChildNodes;
-
-            foreach (XmlNode node in nodes)
-            {
-                if (node.Name == "tracks")
-                {
-                    XmlNodeList tracks = node.ChildNodes;
-                    foreach (XmlNode track in tracks)
-                    {
-                        int key = int.Parse(track.Attributes["artist-id"].Value);
-                        if (idAndNamesArtists[key.ToString()] == comboBox.SelectedItem.ToString())
-                        {
-                            if (int.Parse(track.Attributes["released"].Value) > int.Parse(fromDateTime.Value.ToString()) && int.Parse(track.Attributes["released"].Value) < int.Parse(toDateTime.Value.ToString()))
-                            {
-                                listBox1.Items.Add(track.Attributes["name"].Value + "<<<>>>" + track.Attributes["released"].Value);
-                            }
-
-
-
-                        }
-                    }
-                }
-            }
+            DownloadMusic();
         }
 
         private void ButtonLoad_Click(object sender, EventArgs e)
@@ -60,7 +34,7 @@ namespace MusicViewer
 
             XmlDocument xmlDocument = new XmlDocument();
             xmlDocument.Load(openFileDialog.FileName);
-            XmlNodeList nodes =xmlDocument.DocumentElement.ChildNodes;
+            XmlNodeList nodes = xmlDocument.DocumentElement.ChildNodes;
 
             foreach (XmlNode node in nodes)
             {
@@ -70,7 +44,7 @@ namespace MusicViewer
 
                     foreach (XmlNode item in albums)
                     {
-                         idAndNamesAlbums.Add(item.Attributes["id"].Value, item.Attributes["name"].Value);
+                        idAndNamesAlbums.Add(item.Attributes["id"].Value, item.Attributes["name"].Value);
                     }
                 }
 
@@ -92,6 +66,43 @@ namespace MusicViewer
                     foreach (XmlNode item in albums)
                     {
                         idAndNamesGenres.Add(item.Attributes["id"].Value, item.Attributes["name"].Value);
+                    }
+                }
+            }
+        }
+
+        private void FromDateTime_ValueChanged(object sender, EventArgs e)
+        {
+            DownloadMusic();
+        }
+
+        private void ToDateTime_ValueChanged(object sender, EventArgs e)
+        {
+            DownloadMusic();
+        }
+
+        public void DownloadMusic()
+        {
+            XmlDocument xmlDocument = new XmlDocument();
+            xmlDocument.Load(openFileDialog.FileName);
+            XmlNodeList nodes = xmlDocument.DocumentElement.ChildNodes;
+
+            foreach (XmlNode node in nodes)
+            {
+                listBox1.Items.Clear();
+                if (node.Name == "tracks")
+                {
+                    XmlNodeList tracks = node.ChildNodes;
+                    foreach (XmlNode track in tracks)
+                    {
+                        int key = int.Parse(track.Attributes["artist-id"].Value);
+                        if (comboBox.SelectedItem.ToString() != null && idAndNamesArtists[key.ToString()] == comboBox.SelectedItem.ToString())
+                        {
+                            if (DateTime.Parse(track.Attributes["released"].Value) > fromDateTime.Value && DateTime.Parse(track.Attributes["released"].Value) < toDateTime.Value)
+                            {
+                                listBox1.Items.Add(track.Attributes["name"].Value + "<<<>>>" + track.Attributes["released"].Value);
+                            }
+                        }
                     }
                 }
             }

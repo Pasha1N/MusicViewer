@@ -59,7 +59,7 @@ namespace MusicViewer
                     }
                 }
 
-                if (node.Name == "genre")
+                if (node.Name == "genres")
                 {
                     XmlNodeList albums = node.ChildNodes;
 
@@ -96,16 +96,70 @@ namespace MusicViewer
                     foreach (XmlNode track in tracks)
                     {
                         int key = int.Parse(track.Attributes["artist-id"].Value);
-                        if (comboBox.SelectedItem.ToString() != null && idAndNamesArtists[key.ToString()] == comboBox.SelectedItem.ToString())
+                        if (comboBox.SelectedItem != null && idAndNamesArtists[key.ToString()] == comboBox.SelectedItem.ToString())
                         {
                             if (DateTime.Parse(track.Attributes["released"].Value) > fromDateTime.Value && DateTime.Parse(track.Attributes["released"].Value) < toDateTime.Value)
                             {
-                                listBox1.Items.Add(track.Attributes["name"].Value + "<<<>>>" + track.Attributes["released"].Value);
+                                listBox1.Items.Add(track.Attributes["name"].Value);
                             }
                         }
                     }
                 }
             }
+        }
+
+        private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            Zeroing();
+            XmlDocument xmlDocument = new XmlDocument();
+            xmlDocument.Load(openFileDialog.FileName);
+            XmlNodeList nodes = xmlDocument.DocumentElement.ChildNodes;
+
+            foreach (XmlNode node in nodes)
+            {
+                if (node.Name == "tracks")
+                {
+                    XmlNodeList tracks = node.ChildNodes;
+
+                    foreach (XmlNode track in tracks)
+                    {
+                        if (track.Name == "track")
+                        {
+                            if (track.Attributes["name"].Value == listBox1.SelectedItem.ToString())
+                            {
+                                albumText.Text = idAndNamesAlbums[track.Attributes["album-id"].Value];
+                                releasedText.Text = track.Attributes["released"].Value;
+                                playTime.Text = track.Attributes["length"].Value;
+
+                                XmlNodeList nodesTrack  = track.ChildNodes;
+
+                                foreach (XmlNode nodeTrack in nodesTrack)
+                                {
+                                    XmlNodeList genres = nodeTrack.ChildNodes;
+                                    if (nodeTrack.Name == "genres")
+                                    {
+                                        foreach (XmlNode genre in genres)
+                                        {
+                                            if (genre.Name == "genre")
+                                            {
+                                                genresText.Text = string.Concat(genresText.Text, idAndNamesGenres[genre.Attributes["genre-id"].Value] + ", ");
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        public void Zeroing()
+        {
+            albumLabel.Text = string.Empty;
+            releasedLabel.Text = string.Empty;
+            playTime.Text = string.Empty;
+            genresText.Text = string.Empty;
         }
     }
 }

@@ -35,10 +35,10 @@
             this.toDateTime = new System.Windows.Forms.DateTimePicker();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
+            this.albumLabel = new System.Windows.Forms.Label();
+            this.releasedLabel = new System.Windows.Forms.Label();
+            this.lengthLabel = new System.Windows.Forms.Label();
+            this.labelGenres = new System.Windows.Forms.Label();
             this.albumText = new System.Windows.Forms.Label();
             this.releasedText = new System.Windows.Forms.Label();
             this.playTime = new System.Windows.Forms.Label();
@@ -65,6 +65,7 @@
             this.listBox1.Name = "listBox1";
             this.listBox1.Size = new System.Drawing.Size(242, 316);
             this.listBox1.TabIndex = 1;
+            this.listBox1.SelectedIndexChanged += new System.EventHandler(this.listBox1_SelectedIndexChanged);
             // 
             // comboBox
             // 
@@ -111,81 +112,81 @@
             this.label2.TabIndex = 7;
             this.label2.Text = "To:";
             // 
-            // label3
+            // albumLabel
             // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label3.Location = new System.Drawing.Point(283, 73);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(49, 16);
-            this.label3.TabIndex = 8;
-            this.label3.Text = "Album:";
+            this.albumLabel.AutoSize = true;
+            this.albumLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.albumLabel.Location = new System.Drawing.Point(282, 73);
+            this.albumLabel.Name = "albumLabel";
+            this.albumLabel.Size = new System.Drawing.Size(49, 16);
+            this.albumLabel.TabIndex = 8;
+            this.albumLabel.Text = "Album:";
             // 
-            // label4
+            // releasedLabel
             // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label4.Location = new System.Drawing.Point(261, 99);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(71, 16);
-            this.label4.TabIndex = 9;
-            this.label4.Text = "Released:";
+            this.releasedLabel.AutoSize = true;
+            this.releasedLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.releasedLabel.Location = new System.Drawing.Point(261, 99);
+            this.releasedLabel.Name = "releasedLabel";
+            this.releasedLabel.Size = new System.Drawing.Size(71, 16);
+            this.releasedLabel.TabIndex = 9;
+            this.releasedLabel.Text = "Released:";
             // 
-            // label5
+            // lengthLabel
             // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label5.Location = new System.Drawing.Point(281, 129);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(51, 16);
-            this.label5.TabIndex = 10;
-            this.label5.Text = "Length:";
+            this.lengthLabel.AutoSize = true;
+            this.lengthLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.lengthLabel.Location = new System.Drawing.Point(281, 129);
+            this.lengthLabel.Name = "lengthLabel";
+            this.lengthLabel.Size = new System.Drawing.Size(51, 16);
+            this.lengthLabel.TabIndex = 10;
+            this.lengthLabel.Text = "Length:";
             // 
-            // label6
+            // labelGenres
             // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label6.Location = new System.Drawing.Point(277, 159);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(55, 16);
-            this.label6.TabIndex = 11;
-            this.label6.Text = "Genres:";
+            this.labelGenres.AutoSize = true;
+            this.labelGenres.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.labelGenres.Location = new System.Drawing.Point(277, 159);
+            this.labelGenres.Name = "labelGenres";
+            this.labelGenres.Size = new System.Drawing.Size(55, 16);
+            this.labelGenres.TabIndex = 11;
+            this.labelGenres.Text = "Genres:";
             // 
             // albumText
             // 
             this.albumText.AutoSize = true;
             this.albumText.Location = new System.Drawing.Point(338, 76);
             this.albumText.Name = "albumText";
-            this.albumText.Size = new System.Drawing.Size(35, 13);
+            this.albumText.Size = new System.Drawing.Size(13, 13);
             this.albumText.TabIndex = 12;
-            this.albumText.Text = "label7";
+            this.albumText.Text = "1";
             // 
             // releasedText
             // 
             this.releasedText.AutoSize = true;
             this.releasedText.Location = new System.Drawing.Point(338, 102);
             this.releasedText.Name = "releasedText";
-            this.releasedText.Size = new System.Drawing.Size(35, 13);
+            this.releasedText.Size = new System.Drawing.Size(13, 13);
             this.releasedText.TabIndex = 13;
-            this.releasedText.Text = "label8";
+            this.releasedText.Text = "1";
             // 
             // playTime
             // 
             this.playTime.AutoSize = true;
             this.playTime.Location = new System.Drawing.Point(338, 132);
             this.playTime.Name = "playTime";
-            this.playTime.Size = new System.Drawing.Size(35, 13);
+            this.playTime.Size = new System.Drawing.Size(13, 13);
             this.playTime.TabIndex = 14;
-            this.playTime.Text = "label9";
+            this.playTime.Text = "1";
             // 
             // genresText
             // 
             this.genresText.AutoSize = true;
             this.genresText.Location = new System.Drawing.Point(338, 162);
             this.genresText.Name = "genresText";
-            this.genresText.Size = new System.Drawing.Size(41, 13);
+            this.genresText.Size = new System.Drawing.Size(13, 13);
             this.genresText.TabIndex = 15;
-            this.genresText.Text = "label10";
+            this.genresText.Text = "1";
             // 
             // MusicViewer
             // 
@@ -196,10 +197,10 @@
             this.Controls.Add(this.playTime);
             this.Controls.Add(this.releasedText);
             this.Controls.Add(this.albumText);
-            this.Controls.Add(this.label6);
-            this.Controls.Add(this.label5);
-            this.Controls.Add(this.label4);
-            this.Controls.Add(this.label3);
+            this.Controls.Add(this.labelGenres);
+            this.Controls.Add(this.lengthLabel);
+            this.Controls.Add(this.releasedLabel);
+            this.Controls.Add(this.albumLabel);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.toDateTime);
@@ -226,10 +227,10 @@
         private System.Windows.Forms.DateTimePicker toDateTime;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label albumLabel;
+        private System.Windows.Forms.Label releasedLabel;
+        private System.Windows.Forms.Label lengthLabel;
+        private System.Windows.Forms.Label labelGenres;
         private System.Windows.Forms.Label albumText;
         private System.Windows.Forms.Label releasedText;
         private System.Windows.Forms.Label playTime;

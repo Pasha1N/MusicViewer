@@ -78,6 +78,7 @@
             // 
             // fromDateTime
             // 
+            this.fromDateTime.Enabled = false;
             this.fromDateTime.Location = new System.Drawing.Point(54, 39);
             this.fromDateTime.Name = "fromDateTime";
             this.fromDateTime.Size = new System.Drawing.Size(200, 20);
@@ -86,6 +87,7 @@
             // 
             // toDateTime
             // 
+            this.toDateTime.Enabled = false;
             this.toDateTime.Location = new System.Drawing.Point(313, 39);
             this.toDateTime.Name = "toDateTime";
             this.toDateTime.Size = new System.Drawing.Size(200, 20);
@@ -157,36 +159,36 @@
             this.albumText.AutoSize = true;
             this.albumText.Location = new System.Drawing.Point(338, 76);
             this.albumText.Name = "albumText";
-            this.albumText.Size = new System.Drawing.Size(13, 13);
+            this.albumText.Size = new System.Drawing.Size(10, 13);
             this.albumText.TabIndex = 12;
-            this.albumText.Text = "1";
+            this.albumText.Text = " ";
             // 
             // releasedText
             // 
             this.releasedText.AutoSize = true;
             this.releasedText.Location = new System.Drawing.Point(338, 102);
             this.releasedText.Name = "releasedText";
-            this.releasedText.Size = new System.Drawing.Size(13, 13);
+            this.releasedText.Size = new System.Drawing.Size(10, 13);
             this.releasedText.TabIndex = 13;
-            this.releasedText.Text = "1";
+            this.releasedText.Text = " ";
             // 
             // playTime
             // 
             this.playTime.AutoSize = true;
             this.playTime.Location = new System.Drawing.Point(338, 132);
             this.playTime.Name = "playTime";
-            this.playTime.Size = new System.Drawing.Size(13, 13);
+            this.playTime.Size = new System.Drawing.Size(10, 13);
             this.playTime.TabIndex = 14;
-            this.playTime.Text = "1";
+            this.playTime.Text = " ";
             // 
             // genresText
             // 
             this.genresText.AutoSize = true;
             this.genresText.Location = new System.Drawing.Point(338, 162);
             this.genresText.Name = "genresText";
-            this.genresText.Size = new System.Drawing.Size(13, 13);
+            this.genresText.Size = new System.Drawing.Size(10, 13);
             this.genresText.TabIndex = 15;
-            this.genresText.Text = "1";
+            this.genresText.Text = " ";
             // 
             // MusicViewer
             // 

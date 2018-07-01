@@ -25,6 +25,8 @@ namespace MusicViewer
 
         private void ComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
+            fromDateTime.Enabled = true;
+            toDateTime.Enabled = true;
             DownloadMusic();
         }
 
@@ -74,38 +76,12 @@ namespace MusicViewer
         private void FromDateTime_ValueChanged(object sender, EventArgs e)
         {
             DownloadMusic();
+          Text =DownloadMusic("<").ToString();
         }
 
         private void ToDateTime_ValueChanged(object sender, EventArgs e)
         {
             DownloadMusic();
-        }
-
-        public void DownloadMusic()
-        {
-            XmlDocument xmlDocument = new XmlDocument();
-            xmlDocument.Load(openFileDialog.FileName);
-            XmlNodeList nodes = xmlDocument.DocumentElement.ChildNodes;
-
-            foreach (XmlNode node in nodes)
-            {
-                listBox1.Items.Clear();
-                if (node.Name == "tracks")
-                {
-                    XmlNodeList tracks = node.ChildNodes;
-                    foreach (XmlNode track in tracks)
-                    {
-                        int key = int.Parse(track.Attributes["artist-id"].Value);
-                        if (comboBox.SelectedItem != null && idAndNamesArtists[key.ToString()] == comboBox.SelectedItem.ToString())
-                        {
-                            if (DateTime.Parse(track.Attributes["released"].Value) > fromDateTime.Value && DateTime.Parse(track.Attributes["released"].Value) < toDateTime.Value)
-                            {
-                                listBox1.Items.Add(track.Attributes["name"].Value);
-                            }
-                        }
-                    }
-                }
-            }
         }
 
         private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
@@ -154,10 +130,100 @@ namespace MusicViewer
             }
         }
 
+        public void DownloadMusic()
+        {
+            XmlDocument xmlDocument = new XmlDocument();
+            xmlDocument.Load(openFileDialog.FileName);
+            XmlNodeList nodes = xmlDocument.DocumentElement.ChildNodes;
+
+            foreach (XmlNode node in nodes)
+            {
+                listBox1.Items.Clear();
+                if (node.Name == "tracks")
+                {
+                    XmlNodeList tracks = node.ChildNodes;
+                    foreach (XmlNode track in tracks)
+                    {
+                        int key = int.Parse(track.Attributes["artist-id"].Value);
+                        if (comboBox.SelectedItem != null && idAndNamesArtists[key.ToString()] == comboBox.SelectedItem.ToString())
+                        {
+                            if (DateTime.Parse(track.Attributes["released"].Value) > fromDateTime.Value && DateTime.Parse(track.Attributes["released"].Value) < toDateTime.Value)
+                            {
+                                listBox1.Items.Add(track.Attributes["name"].Value);
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        public DateTime DownloadMusic(string sign)
+        {
+            try
+            {
+                if (sign != ">" && sign != "<")
+                {
+                    throw new Exception("Concrete parameter is incorrect");
+                }
+            }
+            catch (Exception exception)
+            {
+                MessageBox.Show(exception.Message);
+            }
+
+            DateTime date = new DateTime();
+            XmlDocument xmlDocument = new XmlDocument();
+            xmlDocument.Load(openFileDialog.FileName);
+            XmlNodeList nodes = xmlDocument.DocumentElement.ChildNodes;
+
+            string id = null;
+            bool signMore = true;
+            signMore = sign == "<" ? false : true;
+
+            for (int i = 1; i < idAndNamesAlbums.Count; i++)
+            {
+                if (idAndNamesArtists[i.ToString()] == comboBox.SelectedItem.ToString())
+                {
+                    id = i.ToString();
+                    break;
+                }
+            }
+
+            foreach (XmlNode node in nodes)
+            {
+                listBox1.Items.Clear();
+                if (node.Name == "tracks")
+                {
+                    XmlNodeList tracks = node.ChildNodes;
+                    foreach (XmlNode track in tracks)
+                    {
+                        if (id != null && track.Attributes["album-id"].Value == id)
+                        {
+                            if (signMore)
+                            {
+                                if (DateTime.Parse(track.Attributes["released"].Value) > date)
+                                {
+                                    date = DateTime.Parse(track.Attributes["released"].Value);
+                                }
+                            }
+                            else
+                            {
+                                if (DateTime.Parse(track.Attributes["released"].Value) < date)
+                                {
+                                    date = DateTime.Parse(track.Attributes["released"].Value);
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            return date;
+        }
+
         public void Zeroing()
         {
-            albumLabel.Text = string.Empty;
-            releasedLabel.Text = string.Empty;
+            albumText.Text = string.Empty;
+            releasedText.Text = string.Empty;
             playTime.Text = string.Empty;
             genresText.Text = string.Empty;
         }

@@ -32,42 +32,57 @@ namespace MusicViewer
 
         private void ButtonLoad_Click(object sender, EventArgs e)
         {
-            openFileDialog.ShowDialog();
-
-            XmlDocument xmlDocument = new XmlDocument();
-            xmlDocument.Load(openFileDialog.FileName);
-            XmlNodeList nodes = xmlDocument.DocumentElement.ChildNodes;
-
-            foreach (XmlNode node in nodes)
+            if (openFileDialog.ShowDialog() == DialogResult.OK)
             {
-                if (node.Name == "albums")
-                {
-                    XmlNodeList albums = node.ChildNodes;
+                idAndNamesAlbums.Clear();
+                idAndNamesArtists.Clear();
+                idAndNamesGenres.Clear();
+                comboBox.Items.Clear();
 
-                    foreach (XmlNode item in albums)
+                List<string> artists = new List<string>();
+                XmlDocument xmlDocument = new XmlDocument();
+                xmlDocument.Load(openFileDialog.FileName);
+                XmlNodeList nodes = xmlDocument.DocumentElement.ChildNodes;
+
+                foreach (XmlNode node in nodes)
+                {
+                    if (node.Name == "albums")
                     {
-                        idAndNamesAlbums.Add(item.Attributes["id"].Value, item.Attributes["name"].Value);
+                        XmlNodeList albums = node.ChildNodes;
+
+                        foreach (XmlNode item in albums)
+                        {
+                            idAndNamesAlbums.Add(item.Attributes["id"].Value, item.Attributes["name"].Value);
+                        }
                     }
-                }
 
-                if (node.Name == "artists")
-                {
-                    XmlNodeList albums = node.ChildNodes;
-
-                    foreach (XmlNode item in albums)
+                    if (node.Name == "artists")
                     {
-                        comboBox.Items.Add(item.Attributes["name"].Value);
-                        idAndNamesArtists.Add(item.Attributes["id"].Value, item.Attributes["name"].Value);
+                        XmlNodeList albums = node.ChildNodes;
+
+                        foreach (XmlNode item in albums)
+                        {
+                            artists.Add(item.Attributes["name"].Value);
+                            idAndNamesArtists.Add(item.Attributes["id"].Value, item.Attributes["name"].Value);
+                        }
+
+                        artists.Sort();
+
+                        foreach (string artist in artists)
+                        {
+                            comboBox.Items.Add(artist);
+                        }
                     }
-                }
 
-                if (node.Name == "genres")
-                {
-                    XmlNodeList albums = node.ChildNodes;
 
-                    foreach (XmlNode item in albums)
+                    if (node.Name == "genres")
                     {
-                        idAndNamesGenres.Add(item.Attributes["id"].Value, item.Attributes["name"].Value);
+                        XmlNodeList albums = node.ChildNodes;
+
+                        foreach (XmlNode item in albums)
+                        {
+                            idAndNamesGenres.Add(item.Attributes["id"].Value, item.Attributes["name"].Value);
+                        }
                     }
                 }
             }
@@ -75,12 +90,13 @@ namespace MusicViewer
 
         private void FromDateTime_ValueChanged(object sender, EventArgs e)
         {
+            listBox1.Items.Clear();
             DownloadMusic();
-          Text =DownloadMusic("<").ToString();
         }
 
         private void ToDateTime_ValueChanged(object sender, EventArgs e)
         {
+            listBox1.Items.Clear();
             DownloadMusic();
         }
 
@@ -107,7 +123,7 @@ namespace MusicViewer
                                 releasedText.Text = track.Attributes["released"].Value;
                                 playTime.Text = track.Attributes["length"].Value;
 
-                                XmlNodeList nodesTrack  = track.ChildNodes;
+                                XmlNodeList nodesTrack = track.ChildNodes;
 
                                 foreach (XmlNode nodeTrack in nodesTrack)
                                 {
@@ -136,28 +152,40 @@ namespace MusicViewer
             xmlDocument.Load(openFileDialog.FileName);
             XmlNodeList nodes = xmlDocument.DocumentElement.ChildNodes;
 
+            List<string> tracksList = new List<string>(); 
+
             foreach (XmlNode node in nodes)
             {
                 listBox1.Items.Clear();
                 if (node.Name == "tracks")
                 {
                     XmlNodeList tracks = node.ChildNodes;
+                    DateTime minimumDate = GetMinimumOrMaximumDateReleased("<");
+                    DateTime maximumDate = GetMinimumOrMaximumDateReleased(">");
+
                     foreach (XmlNode track in tracks)
                     {
                         int key = int.Parse(track.Attributes["artist-id"].Value);
                         if (comboBox.SelectedItem != null && idAndNamesArtists[key.ToString()] == comboBox.SelectedItem.ToString())
                         {
-                            if (DateTime.Parse(track.Attributes["released"].Value) > fromDateTime.Value && DateTime.Parse(track.Attributes["released"].Value) < toDateTime.Value)
+                            if (DateTime.Parse(track.Attributes["released"].Value) >= minimumDate &&
+                                DateTime.Parse(track.Attributes["released"].Value) <= maximumDate)
                             {
-                                listBox1.Items.Add(track.Attributes["name"].Value);
+                                tracksList.Add(track.Attributes["name"].Value);
                             }
                         }
+                    }
+                    tracksList.Sort();
+
+                    foreach(string track in tracksList)
+                    {
+                        listBox1.Items.Add(track);
                     }
                 }
             }
         }
 
-        public DateTime DownloadMusic(string sign)
+        public DateTime GetMinimumOrMaximumDateReleased(string sign)
         {
             try
             {
@@ -172,6 +200,8 @@ namespace MusicViewer
             }
 
             DateTime date = new DateTime();
+            date = DateTimePicker.MaximumDateTime;
+
             XmlDocument xmlDocument = new XmlDocument();
             xmlDocument.Load(openFileDialog.FileName);
             XmlNodeList nodes = xmlDocument.DocumentElement.ChildNodes;

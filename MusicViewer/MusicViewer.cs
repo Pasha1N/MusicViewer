@@ -21,10 +21,13 @@ namespace MusicViewer
         public MusicViewer()
         {
             InitializeComponent();
+            toDateTime.Tag = toDateTime;
+            fromDateTime.Tag = fromDateTime;
         }
 
         private void ComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
+            SetMinOrMaxDate();
             fromDateTime.Enabled = true;
             toDateTime.Enabled = true;
             DownloadMusic();
@@ -34,6 +37,7 @@ namespace MusicViewer
         {
             if (openFileDialog.ShowDialog() == DialogResult.OK)
             {
+              
                 idAndNamesAlbums.Clear();
                 idAndNamesArtists.Clear();
                 idAndNamesGenres.Clear();
@@ -84,7 +88,7 @@ namespace MusicViewer
                             idAndNamesGenres.Add(item.Attributes["id"].Value, item.Attributes["name"].Value);
                         }
                     }
-                }
+                 }
             }
         }
 
@@ -160,16 +164,14 @@ namespace MusicViewer
                 if (node.Name == "tracks")
                 {
                     XmlNodeList tracks = node.ChildNodes;
-                    DateTime minimumDate = GetMinimumOrMaximumDateReleased("<");
-                    DateTime maximumDate = GetMinimumOrMaximumDateReleased(">");
-
+                   
                     foreach (XmlNode track in tracks)
                     {
                         int key = int.Parse(track.Attributes["artist-id"].Value);
                         if (comboBox.SelectedItem != null && idAndNamesArtists[key.ToString()] == comboBox.SelectedItem.ToString())
                         {
-                            if (DateTime.Parse(track.Attributes["released"].Value) >= minimumDate &&
-                                DateTime.Parse(track.Attributes["released"].Value) <= maximumDate)
+                            if (DateTime.Parse(track.Attributes["released"].Value) > fromDateTime.Value &&
+                                DateTime.Parse(track.Attributes["released"].Value) < toDateTime.Value)
                             {
                                 tracksList.Add(track.Attributes["name"].Value);
                             }
@@ -200,7 +202,7 @@ namespace MusicViewer
             }
 
             DateTime date = new DateTime();
-            date = DateTimePicker.MaximumDateTime;
+            //date = DateTimePicker.MaximumDateTime;
 
             XmlDocument xmlDocument = new XmlDocument();
             xmlDocument.Load(openFileDialog.FileName);
@@ -222,6 +224,12 @@ namespace MusicViewer
             foreach (XmlNode node in nodes)
             {
                 listBox1.Items.Clear();
+
+                if(!signMore)
+                {
+                    date = DateTime.MaxValue;
+                }
+
                 if (node.Name == "tracks")
                 {
                     XmlNodeList tracks = node.ChildNodes;
@@ -250,6 +258,21 @@ namespace MusicViewer
             return date;
         }
 
+        public void SetMinOrMaxDate()
+        {
+            //  DateTime minimumDate = GetMinimumOrMaximumDateReleased("<");
+            DateTime maximumDate = GetMinimumOrMaximumDateReleased(">");
+
+            // fromDateTime.MinDate = minimumDate;
+            int d = maximumDate.Day;
+            maximumDate.AddDays(maximumDate.Day - 1);
+            fromDateTime.MaxDate = maximumDate;
+            //Пользователь не должен иметь возможность выбрать в качестве начальной точки диапазона дату большую,
+            // чем конечная точка диапазона, и наоборот.
+
+
+
+        }
         public void Zeroing()
         {
             albumText.Text = string.Empty;

@@ -260,13 +260,12 @@ namespace MusicViewer
 
         public void SetMinOrMaxDate()
         {
-            //  DateTime minimumDate = GetMinimumOrMaximumDateReleased("<");
-            DateTime maximumDate = GetMinimumOrMaximumDateReleased(">");
+          
+           // fromDateTime.MaxDate = GetMinimumOrMaximumDateReleased(">");
+            fromDateTime.MinDate = GetMinimumOrMaximumDateReleased("<");
+            toDateTime.MaxDate = GetMinimumOrMaximumDateReleased(">");
 
-            // fromDateTime.MinDate = minimumDate;
-            int d = maximumDate.Day;
-            maximumDate.AddDays(maximumDate.Day - 1);
-            fromDateTime.MaxDate = maximumDate;
+
             //Пользователь не должен иметь возможность выбрать в качестве начальной точки диапазона дату большую,
             // чем конечная точка диапазона, и наоборот.
 

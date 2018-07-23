@@ -42,8 +42,8 @@
             this.albumText = new System.Windows.Forms.Label();
             this.releasedText = new System.Windows.Forms.Label();
             this.playTime = new System.Windows.Forms.Label();
-            this.genresText = new System.Windows.Forms.Label();
             this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
+            this.genresText = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // buttonLoad
@@ -65,7 +65,7 @@
             this.listBox1.Name = "listBox1";
             this.listBox1.Size = new System.Drawing.Size(242, 316);
             this.listBox1.TabIndex = 1;
-            this.listBox1.SelectedIndexChanged += new System.EventHandler(this.listBox1_SelectedIndexChanged);
+            this.listBox1.SelectedIndexChanged += new System.EventHandler(this.ListBox1_SelectedIndexChanged);
             // 
             // comboBox
             // 
@@ -183,12 +183,16 @@
             // 
             // genresText
             // 
-            this.genresText.AutoSize = true;
-            this.genresText.Location = new System.Drawing.Point(338, 162);
+            this.genresText.BackColor = System.Drawing.SystemColors.Control;
+            this.genresText.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.genresText.Cursor = System.Windows.Forms.Cursors.Arrow;
+            this.genresText.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.genresText.Location = new System.Drawing.Point(341, 161);
+            this.genresText.Multiline = true;
             this.genresText.Name = "genresText";
-            this.genresText.Size = new System.Drawing.Size(10, 13);
-            this.genresText.TabIndex = 15;
-            this.genresText.Text = " ";
+            this.genresText.ReadOnly = true;
+            this.genresText.Size = new System.Drawing.Size(172, 149);
+            this.genresText.TabIndex = 16;
             // 
             // MusicViewer
             // 
@@ -236,8 +240,8 @@
         private System.Windows.Forms.Label albumText;
         private System.Windows.Forms.Label releasedText;
         private System.Windows.Forms.Label playTime;
-        private System.Windows.Forms.Label genresText;
         private System.Windows.Forms.OpenFileDialog openFileDialog;
+        private System.Windows.Forms.TextBox genresText;
     }
 }
 

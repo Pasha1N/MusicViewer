@@ -19,14 +19,6 @@ namespace MusicViewer
             fromDateTime.Tag = fromDateTime;
         }
 
-        private void ComboBox_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            SetMinOrMaxDate();
-            fromDateTime.Enabled = true;
-            toDateTime.Enabled = true;
-            DownloadMusic();
-        }
-
         private void ButtonLoad_Click(object sender, EventArgs e)
         {
             if (openFileDialog.ShowDialog() == DialogResult.OK)
@@ -83,14 +75,15 @@ namespace MusicViewer
             }
         }
 
-        private void FromDateTime_ValueChanged(object sender, EventArgs e)
+        private void ComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            listBox1.Items.Clear();
             SetMinOrMaxDate();
+            fromDateTime.Enabled = true;
+            toDateTime.Enabled = true;
             DownloadMusic();
         }
 
-        private void ToDateTime_ValueChanged(object sender, EventArgs e)
+        private void FromDateTime_ValueChanged(object sender, EventArgs e)
         {
             listBox1.Items.Clear();
             SetMinOrMaxDate();
@@ -153,6 +146,13 @@ namespace MusicViewer
                     }
                 }
             }
+        }
+
+        private void ToDateTime_ValueChanged(object sender, EventArgs e)
+        {
+            listBox1.Items.Clear();
+            SetMinOrMaxDate();
+            DownloadMusic();
         }
 
         public void DownloadMusic()

@@ -215,7 +215,7 @@ namespace MusicViewer
 
             string id = null;
             bool signMore = true;
-            signMore = sign == "<" ? false : true;
+            signMore = sign == "<";
 
             for (int i = 1; i < idAndNamesArtists.Count + 1; i++)
             {

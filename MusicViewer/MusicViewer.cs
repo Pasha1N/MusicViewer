@@ -7,10 +7,10 @@ namespace MusicViewer
 {
     public partial class MusicViewer : Form
     {
+        private IEnumerable<string> attributes = new List<string>();
         private IDictionary<string, string> idAndNamesAlbums = new Dictionary<string, string>();
         private IDictionary<string, string> idAndNamesArtists = new Dictionary<string, string>();
-        private IDictionary<string, string> idAndNamesGenres = new Dictionary<string, string>();
-        private IEnumerable<string> attributes = new List<string>();
+        private IDictionary<string, string> idAndNamesGenres = new Dictionary<string, string>();     
    
         public MusicViewer()
         {
